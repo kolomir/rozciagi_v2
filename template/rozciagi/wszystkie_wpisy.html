@@ -1,0 +1,72 @@
+{% extends 'rozciagi/base.html' %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="card col-md-12 my-3 mx-auto text-white primary-color darken-1">
+            <div class="card-body">
+                <h2>Wszystkie wpisy</h2>
+            </div>
+        </div>
+        <div class="card col-md-12 my-3 mx-auto">
+            <table id="dtWpisyPrzyszle" class="table table-striped table-hover table-sm table-borderless" cellspacing="0" width="100%">
+                <thead class="black white-text">
+                    <tr>
+                        <th class="th-sm">#</th>
+                        <th class="th-sm">Indeks kontaktu</th>
+                        <th class="th-sm">Rodzaj listy</th>
+                        <th class="th-sm">Przekroj przewodu</th>
+                        <th class="th-sm">Rozciag</th>
+                        {% if user.is_authenticated %}
+                        <th class="th-sm">Wysokość</th>
+                        {% endif %}
+                        <th class="th-sm">nr narzedzia</th>
+                        <th class="th-sm">Rodzaj narzedzia</th>
+                        <th class="th-sm">nr zlecenia</th>
+                        <th class="th-sm">Poprawkowe</th>
+                        <th class="th-sm">nr pracownika</th>
+                        <th class="th-sm">Grupa Robocza</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for wpis in rozciag %}
+                    <tr>
+                        <th scope="row">{{ wpis.id }}</th>
+                        <td>{{ wpis.indeks_kontaktu }}</td>
+                        <td>{{ wpis.lista }}</td>
+                        <td>{{ wpis.przekrojePrzewodow }}</td>
+                        <td>{{ wpis.rozciag }}</td>
+                        {% if user.is_authenticated %}
+                        <td>{{ wpis.wysokosc }}</td>
+                        {% endif %}
+                        <td>{{ wpis.narzedzia }}</td>
+                        <td>{{ wpis.narzedzia_rodzaj }}</td>
+                        <td>{{ wpis.nr_zlecenia }}</td>
+                        <td>{{ wpis.poprawkowe }}</td>
+                        <td>{{ wpis.nr_pracownika }}</td>
+                        <td>{{ wpis.grupa_robocza }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot class="black white-text">
+                    <tr>
+                        <th class="th-sm">#</th>
+                        <th class="th-sm">Indeks kontaktu</th>
+                        <th class="th-sm">Rodzaj listy</th>
+                        <th class="th-sm">Przekroj przewodu</th>
+                        <th class="th-sm">Rozciag</th>
+                        {% if user.is_authenticated %}
+                        <th class="th-sm">Wysokość</th>
+                        {% endif %}
+                        <th class="th-sm">nr narzedzia</th>
+                        <th class="th-sm">Rodzaj narzedzia</th>
+                        <th class="th-sm">nr zlecenia</th>
+                        <th class="th-sm">Poprawkowe</th>
+                        <th class="th-sm">nr pracownika</th>
+                        <th class="th-sm">Grupa Robocza</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+{% endblock content %}

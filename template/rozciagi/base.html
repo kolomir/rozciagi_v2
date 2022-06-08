@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+    {% include "rozciagi/head.html" %}
+    <body class="d-flex flex-column h-100 d-inline-block">
+        {% include "rozciagi/header.html" %}
+        {% include "rozciagi/messages.html" %}
+
+        {% block content %}
+        {% endblock content %}
+
+        {% include "rozciagi/footer.html" %}
+        {% include "rozciagi/scripts.html" %}
+    </body>
+</html>

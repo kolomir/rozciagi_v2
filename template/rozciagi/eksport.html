@@ -1,0 +1,75 @@
+{% extends 'rozciagi/base.html' %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="card col-md-12 my-3 mx-auto text-white primary-color darken-1">
+            <div class="card-body">
+                <h2>Eksport danych</h2>
+            </div>
+        </div>
+        <div class="card col-md-6 my-3 mx-auto">
+            <div class="card-body">
+
+                <form method="post" role="form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-row mb-3">
+                        <div class="col md-form form-margin">
+                            <label class="control-label" for="id_indeks_kontaktu">Indeks kontaktu</label>
+                            <input maxlength="30" placeholder="Indeks kontaktu..." type="text" id="id_indeks_kontaktu" name="indeks_kontaktu_contains" class=" form-control">
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col md-form form-margin">
+                            <label class="control-label" for="id_Numer_zlecenia">Numer zlecenia</label>
+                            <input maxlength="30" placeholder="Numer zlecenia..." type="text" id="id_Numer_zlecenia" name="numer_zlecenia_contains" class=" form-control">
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col md-form form-margin">
+                            <label class="control-label" for="id_Pracownik">Pracownik</label>
+                            <input maxlength="30" placeholder="Pracownik..." type="text" id="id_Pracownik" name="pracownik_2" class=" form-control">
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col md-form form-margin">
+                            <label class="control-label" for="id_Narzedzia">Narzedzia</label>
+                            <input maxlength="30" placeholder="Narzedzia..." type="text" id="id_Narzedzia" name="narzedzia_contains" class=" form-control">
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col md-form input-with-post-icon datepicker">
+                            <label class="control-label" for="id_Data_wpisu_od">Data wpisu od</label>
+                            <input maxlength="40" placeholder="Data wpisu od..." type="text" id="id_Data_wpisu_od" name="data_od" class=" form-control" >
+                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                        </div>
+                        <div class="col md-form input-with-post-icon datepicker">
+                            <label class="control-label" for="id_Data_wpisu_do">Data wpisu do</label>
+                            <input maxlength="40" placeholder="Data wpisu do..." type="text" id="id_Data_wpisu_do" name="data_do" class=" form-control" >
+                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col md-form input-with-post-icon datepicker">
+                            <label class="control-label" for="id_Data_serwisu_od">Data serwisu od</label>
+                            <input maxlength="40" placeholder="Data serwisu od..." type="text" id="id_Data_serwisu_od" name="data_serwis_od" class=" form-control" >
+                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                        </div>
+                        <div class="col md-form input-with-post-icon datepicker">
+                            <label class="control-label" for="id_Data_serwisu_do">Data serwisu do</label>
+                            <input maxlength="40" placeholder="Data serwisu do..." type="text" id="id_Data_serwisu_do" name="data_serwis_do" class=" form-control" >
+                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col md-form">
+                            <input type="hidden" id="eksport" name="eksport" value="on" class=" form-control">
+                            <center><button type="submit" class="btn btn-primary">Eksportuj <i class="fas fa-save fa-lg"></i></button></center>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

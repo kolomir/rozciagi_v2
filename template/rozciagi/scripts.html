@@ -1,0 +1,29 @@
+{% load static %}
+    <!-- jQuery -->
+    <script type="text/javascript" src="{% static 'MDB-Pro_4.19.2/js/jquery.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'MDB-Pro_4.19.2/js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'MDB-Pro_4.19.2/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'MDB-Pro_4.19.2/js/mdb.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'MDB-Pro_4.19.2/js/addons/datatables.min.js' %}"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript">
+
+
+        $(document).ready(function() {
+            $('.mdb-select').materialSelect();
+        });
+
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            formatSubmit: 'yyyy-mm-dd'
+        });
+
+        // Material Select Destroy
+        $('.mdb-select').materialSelect({
+            destroy: true
+        });
+
+    </script>

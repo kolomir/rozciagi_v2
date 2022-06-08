@@ -1,0 +1,125 @@
+{% extends 'rozciagi/base.html' %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="card col-md-12 my-3 mx-auto text-white primary-color darken-1">
+            <div class="card-body">
+                <h2>Nowy wpis</h2>
+            </div>
+        </div>
+        <div class="card col-md-6 my-3 mx-auto">
+            <div class="card-body">
+                <form method="post" role="form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-row mb-3">
+                        <div class="col md-form form-margin">
+                            <label class="control-label" for="id_nr_zlecenia">Nr zlecenia</label>
+                            <input maxlength="30" placeholder="Nr zlecenia" type="text" id="id_nr_zlecenia" name="nr_zlecenia" class=" form-control" required>
+                        </div>
+                        <div class="col md-form form-margin">
+                            <label class="control-label" for="id_indeks_kontaktu">Indeks kontaktu</label>
+                            <input maxlength="30" placeholder="Indeks kontaktu" type="text" id="id_indeks_kontaktu" name="indeks_kontaktu" class=" form-control" required>
+                        </div>
+                        <div class="col md-form form-margin form-check">
+                            <center><input type="checkbox" class="form-check-input" id="id_poprawkowe" name="poprawkowe">
+                            <label class="form-check-label" for="id_poprawkowe">Poprawkowe</label></center>
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col md-form form-margin">
+                            <label class="control-label" for="id_nr_pozycji">Nr pozycji</label>
+                            <input maxlength="40" placeholder="Nr pozycji" type="text" id="id_nr_pozycji" name="nr_pozycji" class=" form-control" required>
+                        </div>
+                        <div class="col md-form form-margin">
+                            <select name="lista" class="mdb-select md-form" id="id_lista" required  searchable="Search here...">
+                                <option value="" disabled selected>Lista...</option>
+                                {% for result in lista %}
+                                <option value="{{ result.id }}">{{ result.nazwa }}</option>
+                                {% endfor %}
+                            </select>
+                            <label class="mdb-main-label">Lista</label>
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col md-form">
+                            <select name="przekrojePrzewodow" class="mdb-select md-form" id="id_przekrojePrzewodow" required  searchable="Search here...">
+                                <option value="" disabled selected>Przekroje Przewodow...</option>
+                                {% for result in przekroje %}
+                                <option value="{{ result.id }}">{{ result.nazwa }}</option>
+                                {% endfor %}
+                            </select>
+                            <label class="mdb-main-label">Przekroje Przewodow</label>
+                        </div>
+                        <div class="col md-form">
+                            <label class="control-label" for="id_rozciag">Rozciag</label>
+                            <input maxlength="30" placeholder="Rozciag" type="text" id="id_rozciag" name="rozciag" class=" form-control" required>
+                        </div>
+                        <div class="col md-form form-check">
+                            <center><input type="checkbox" class="form-check-input" id="id_potwierdzenie" name="potwierdzenie">
+                            <label class="form-check-label" for="id_potwierdzenie">Potwierdzenie</label></center>
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col md-form">
+                            <label class="control-label" for="id_narzedzia">Narzedzia</label>
+                            <input maxlength="40" placeholder="Narzedzia" type="text" id="id_narzedzia" name="narzedzia" class=" form-control" required>
+                        </div>
+                        <div class="col md-form">
+                            <select name="narzedzia_rodzaj" class="mdb-select md-form" id="id_narzedzia_rodzaj" required  searchable="Search here...">
+                                <option value="" disabled selected>Rodzaj narzedzia...</option>
+                                {% for result in rodzaj %}
+                                <option value="{{ result.id }}">{{ result.grupa }}</option>
+                                {% endfor %}
+                            </select>
+                            <label class="mdb-main-label">Rodzaj narzedzia</label>
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col md-form">
+                            <label class="control-label" for="id_nr_pracownika">Nr pracownika</label>
+                            <input maxlength="40" placeholder="Nr_pracownika" type="text" id="id_nr_pracownika" name="nr_pracownika" class=" form-control" required>
+                        </div>
+                        <div class="col md-form">
+                            <select name="grupa_robocza" class="mdb-select md-form" id="id_grupa_robocza" required  searchable="Search here...">
+                                <option value="" disabled selected>Grupa Robocza...</option>
+                                {% for result in grupy %}
+                                <option value="{{ result.id }}">{{ result.nazwa }}</option>
+                                {% endfor %}
+                            </select>
+                            <label class="mdb-main-label">Grupa Robocza</label>
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col md-form">
+                            <label class="control-label" for="id_wysokosc">Wysokość</label>
+                            <input maxlength="40" placeholder="Wysokość" type="text" id="id_wysokosc" name="wysokosc" class=" form-control" >
+                        </div>
+                        <div class="col md-form input-with-post-icon datepicker">
+                            {% if user.is_authenticated %}
+                            <label class="control-label" for="id_data_serwis">Data serwisu</label>
+                            <input maxlength="40" placeholder="Data serwisu" type="text" id="id_data_serwis" name="data_serwis" class=" form-control" >
+                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col md-form">
+                            <input type="hidden" id="data_dodania_text" name="data_dodania" value={{ data_dodania }} class=" form-control">
+                            <center><button type="submit" class="btn btn-primary">Zapisz <i class="fas fa-save fa-lg"></i></button></center>
+                        </div>
+                        <div class="col md-form">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

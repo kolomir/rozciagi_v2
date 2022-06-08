@@ -1,0 +1,15 @@
+input[type=checkbox] {
+    margin-top: 35px;
+}
+
+.mdb-select {
+    width: 100% !important;
+}
+.md-form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-margin {
+    margin-top: 10px;
+}
